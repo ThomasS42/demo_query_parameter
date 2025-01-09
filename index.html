@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Parameter Anzeige</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .output {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Query-Parameter anzeigen</h1>
+    <p>Bitte öffnen Sie diese Seite mit einer URL, die einen Query-Parameter enthält, z.B. <strong>?name=Max&alter=30</strong></p>
+    
+    <div class="output" id="output"></div>
+
+    <script>
+        // Funktion zum Auslesen des Query-Parameters
+        function getQueryParameter() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let output = '<strong>Abgespeicherte Query-Parameter:</strong><br>';
+
+            // Iteriert über alle Query-Parameter und zeigt sie an
+            urlParams.forEach((value, key) => {
+                output += `Key: <strong>${key}</strong> - Value: <strong>${value}</strong><br>`;
+            });
+
+            // Ausgabe auf der Webseite anzeigen
+            document.getElementById('output').innerHTML = output;
+        }
+
+        // Aufruf der Funktion beim Laden der Seite
+        window.onload = getQueryParameter;
+    </script>
+</body>
+</html>
